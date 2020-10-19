@@ -6,13 +6,13 @@ var btn = document.getElementById('calc')
 
 var date = new Date()
 
-var months = ['Janeiro', 'Fevereiro', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+var months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 var weekdays = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado']
 
 btn.addEventListener('click', () => {
     date.setDate(input_monthday.value)
-    date.setMonth(input_month.value - 1)
+    date.setMonth(input_month.value)
     date.setFullYear(input_year.value)
 
-    screen_result.innerText = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}, ${weekdays[date.getDay()]}`
+    screen_result.innerText = `${date.getDate()} de ${months[input_month.value]} de ${date.getFullYear()}, ${weekdays[date.getDay()]}`
 })
