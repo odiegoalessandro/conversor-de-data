@@ -1,53 +1,18 @@
-var mountday = document.getElementById('mountday')
-var mount = document.getElementById('mount')
-var year = document.getElementById('year')
+var input_monthday = document.getElementById('monthday')
+var input_month = document.getElementById('month')
+var input_year = document.getElementById('year')
 var screen_result = document.getElementById('result')
 var btn = document.getElementById('calc')
 
-btn.addEventListener('click', () => {
+var date = new Date()
 
-    screen_result.value = ""
-    let k = mountday.value + 2 * mountday.value + [3 * (mount.value + 1) / 5] + year.value + year.value / 4 - year.value / 100 + year.value / 400 + 2
-    let result = (k % 7).toFixed(0)
-    let weekday = "d"
-    if(mountday.value <= 31 && mount.value <= 12){
-        mount.value = ""
-        mountday.value = ""
-        year.value = ""
-        if(result == 1){
-            weekday = 'Sabado'
-            return screen_result.innerText = weekday
-        }
-        if(result == 2){
-            weekday = 'Domingo'
-            return screen_result.innerText = weekday
-        }
-        if(result == 3){
-            weekday = 'Segunda-feira'
-            return screen_result.innerText = weekday
-        }
-        if(result == 4){
-            weekday = 'Terça-feira'
-            return screen_result.innerText = weekday
-        }
-        if(result == 5){
-            weekday = 'Quarta-feira'
-            return screen_result.innerText = weekday
-        }
-        if(result == 6){
-            weekday = 'Quinta-feira'
-            return screen_result.innerText = weekday
-        }
-        if(result == 7){
-            weekday = 'Sexta-feira'
-            return screen_result.innerText = weekday
-        }
-  
-    }
-    else{
-        mount.value = ""
-        mountday.value = ""
-        year.value = ""
-        alert('Preencha corretamente')
-    }
+var months = ['Janeiro', 'Fevereiro', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+var weekdays = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado']
+
+btn.addEventListener('click', () => {
+    date.setDate(input_monthday.value)
+    date.setMonth(input_month.value - 1)
+    date.setFullYear(input_year.value)
+
+    screen_result.innerText = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}, ${weekdays[date.getDay()]}`
 })
